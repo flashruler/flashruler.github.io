@@ -31,15 +31,23 @@
     </header>
 
     <main class="container mx-auto mt-8 px-4 pb-8">
-        <div class="w-full min-h-[calc(100vh-12rem)] bg-white rounded-lg shadow-lg">
-            <iframe
-                src="./assets/resume_2025.pdf"
+        <div class="w-full min-h-[calc(100vh-12rem)] bg-white rounded-lg shadow-lg p-4">
+            <object
+                data="./assets/resume_2025.pdf"
+                type="application/pdf"
                 class="w-full h-full min-h-[calc(100vh-12rem)]"
-                title="Resume"
-                loading="lazy"
-                sandbox="allow-same-origin allow-scripts"
             >
-            </iframe>
+                <div class="text-center py-8">
+                    <p class="mb-4">Oh my~ It seems your browser doesn't support PDFs directly.</p>
+                    <a 
+                        href="./assets/resume_2025.pdf" 
+                        target="_blank"
+                        class="inline-block px-4 py-2 bg-gray-800 text-white rounded-md hover:bg-gray-700 transition-colors"
+                    >
+                        Download PDF
+                    </a>
+                </div>
+            </object>
         </div>
     </main>
 
