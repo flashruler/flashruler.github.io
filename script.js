@@ -7,6 +7,12 @@ document.addEventListener("DOMContentLoaded", () => {
       link: "https://github.com/flashruler/Exploration-of-MobileNetV1-on-CIFAR-10-Dataset",
     },
     {
+        title: "Shoe Recommendation System using T-SNE and UMAP",
+        description: "The final project for UC San Diego's COGS 118B Unsupervised Learning class taught by Professor Jason Fleischer.",
+        technologies: ["Python", "Pandas", "Scikit-learn", "T-SNE", "UMAP"],
+        link: "https://github.com/flashruler/Shoe-Recommendation-System-using-T-SNE-and-UMAP",
+      },
+    {
         title: "Makerspace Digital Bulletin Board",
         description: "A digital bulletin board written in NextJS for the UC San Diego Makerspace.",
         technologies: ["Typescript", "Next.js", "PostgreSQL", "Express.js", "NodeJS"],
@@ -64,8 +70,21 @@ document.addEventListener("DOMContentLoaded", () => {
                information to the 5,000+ students and faculty who visit the Makerspace 
                each quarter, transforming what was once a neglected display into a
                 valuable information hub for the entire community.</p>
+          `
+      },
+      'Shoe Recommendation System using T-SNE and UMAP': {
+          title: 'Shoe Recommendation System using T-SNE and UMAP',
+          description: `
+              <h4 class="text-lg font-bold mb-2">Written using:</h4>
+              <p class="mb-4">Python, Pandas, Scikit-learn, T-SNE, UMAP</p>
+              <img src="./assets/umap_tsne_cluster_2.png" alt="Shoe Recommendation System using T-SNE and UMAP" class="mb-4">
+              <h4 class="text-lg font-bold mb-2">Description:</h4>
+              <p> This was a final project for UC San Diego's COGS 118B Unsupervised Learning class taught by Professor Jason Fleischer. Our report 
+              can be found in the "Final Project Unsupervised Shoe Recommender System.ipynb" notebook. Additionally,
+                The original notebooks where we did our individual T-SNE and UMAP implementations can be viewed 
+                in "TSNE_IMPLEMENTATION_AGGO.ipynb" and "UMAP_IMPLEMENTATION_AGGO.ipynb" respectively.</p>
               <div class="mt-4 flex gap-4">
-                  <a href="https://github.com/flashruler/Exploration-of-MobileNetV1-on-CIFAR-10-Dataset" class="text-blue-600 hover:underline">GitHub</a>
+                  <a href="https://github.com/flashruler/Shoe-Recommendation-using-T-SNE-and-UMAP" class="text-blue-600 hover:underline">GitHub</a>
               </div>
           `
       }
