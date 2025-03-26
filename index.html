@@ -1,8 +1,66 @@
-<!doctype html>
-<html>
-  <head>
-    <title>This is the title of the webpage!</title>
-    <link rel="stylesheet" href="style.css">
-  </head>
-<div class="flex flex-row bg-red-100"> test</div>
-</html>>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name - Software Engineer Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="styles.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/your-kit-code.js" crossorigin="anonymous"></script>
+</head>
+<body class="bg-gray-100 text-gray-800">
+    <header class="border-b border-gray-200 py-4 px-4 sticky top-0 bg-white z-10">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <img src="./assets/pfp.png" alt="Profile Picture" class="rounded-full w-10 h-10 object-cover">
+                <h1 class="text-xl font-normal text-gray-800">Jay Buensuceso</h1>
+            </div>
+            <nav>
+                <ul class="flex space-x-8">
+                    <li><a href="https://www.linkedin.com/in/jaybuens/" class="text-gray-800 hover:text-gray-600">linkedin</a></li>
+                    <li><a href="https://github.com/flashruler" class="text-gray-800 hover:text-gray-600">github</a></li>
+                    <li><a href="#resume" class="text-gray-800 hover:text-gray-600">resume</a></li>
+                    <li><a href="#contact" class="text-gray-800 hover:text-gray-600">email</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container mx-auto mt-8 px-4">
+        <section id="about" class="mb-12 max-w-2xl">
+            <h2 class="text-3xl font-bold mb-4">Hello - I'm Jay, a software engineer interested in full-stack development and machine learning!</h2>
+            <div class="flex gap-8">
+                <div class="space-y-4">
+                    <p class="text-lg">
+                        I recently graduated from UC San Diego and I enjoy crafting efficient, scalable, and user-friendly web applications.
+                        Check out some of my projects below!
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="mb-12">
+            <h2 class="text-3xl font-bold mb-4">My Projects</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Project cards will be dynamically added here -->
+            </div>
+        </section>
+
+        <!-- Dialog Template (Initially Hidden) -->
+        <div id="projectDialog" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+            <div class="bg-white rounded-lg p-8 max-w-2xl w-full m-4">
+                <div class="flex justify-between items-start mb-4">
+                    <h3 id="dialogTitle" class="text-2xl font-bold"></h3>
+                    <button class="close-dialog text-gray-500 hover:text-gray-700">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div id="dialogContent" class="prose"></div>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
