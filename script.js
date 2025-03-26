@@ -45,7 +45,16 @@ document.addEventListener("DOMContentLoaded", () => {
               <h4 class="text-lg font-bold mb-2">Includes:</h4>
               <p class="mb-4">Python, PyTorch, Jupyter Notebook, CIFAR-10 Dataset</p>
               <h4 class="text-lg font-bold mb-2">Description:</h4>
-              <p>Detailed project description goes here...</p>
+
+              <p>This final project delves into the fascinating world of neural network architectures by investigating the complexity characteristics of the CIFAR-10 image classification dataset by using an implementation of Google's MobileNetV1.</p>
+
+              <p>Our work includes:</p>
+              <ul class="list-disc pl-6 mb-4">
+                <li> - Custom implementations of MobileNetV1 optimized for CIFAR-10</li>
+                <li> - Detailed analysis of performance metrics and computational efficiency</li>
+                <li> - Comprehensive insights from various implementations</li>
+                <li> - Strategic recommendations for future architectural improvements</li>
+              </ul>
               <div class="mt-4 flex gap-4">
                   <a href="https://github.com/flashruler/Exploration-of-MobileNetV1-on-CIFAR-10-Dataset" class="text-blue-600 hover:underline">GitHub</a>
               </div>
