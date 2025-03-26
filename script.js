@@ -6,6 +6,11 @@ document.addEventListener("DOMContentLoaded", () => {
       technologies: ["Python", "PyTorch", "Jupyter Notebook", "CIFAR-10"],
       link: "https://github.com/flashruler/Exploration-of-MobileNetV1-on-CIFAR-10-Dataset",
     },
+    {
+        title: "Makerspace Digital Bulletin Board",
+        description: "A digital bulletin board written in NextJS for the UC San Diego Makerspace.",
+        technologies: ["Typescript", "Next.js", "PostgreSQL", "Express.js", "NodeJS"],
+      },
   ]
 
   const projectsContainer = document.querySelector("#projects .grid")
@@ -35,6 +40,30 @@ document.addEventListener("DOMContentLoaded", () => {
               <p class="mb-4">Python, PyTorch, Jupyter Notebook, CIFAR-10 Dataset</p>
               <h4 class="text-lg font-bold mb-2">Description:</h4>
               <p>Detailed project description goes here...</p>
+              <div class="mt-4 flex gap-4">
+                  <a href="https://github.com/flashruler/Exploration-of-MobileNetV1-on-CIFAR-10-Dataset" class="text-blue-600 hover:underline">GitHub</a>
+              </div>
+          `
+      },
+      'Makerspace Digital Bulletin Board': {
+          title: 'Makerspace Digital Bulletin Board',
+          description: `
+              <h4 class="text-lg font-bold mb-2">Written using:</h4>
+              <p class="mb-4">Typescript, Next.js, NodeJS, PostgreSQL, ExpressJS</p>
+              <img src="./assets/digital_bulletin.png" alt="Makerspace Digital Bulletin Board" class="mb-4">
+              <h4 class="text-lg font-bold mb-2">Description:</h4>
+              <p>When the UC San Diego Makerspace opened in 2022, its atrium featured a
+               TV displaying a simple Google Sites webpage as a digital bulletin board. 
+               Over time, updates became infrequent, resulting in outdated and incorrect 
+               information being displayed. </p>
+               <p>Recognizing an opportunity for improvement rather than merely updating 
+               content, we developed a comprehensive solution using Next.js, Express.js, 
+               and PostgreSQL. This strategic overhaul not only streamlined the update 
+               process but also expanded our content capabilities significantly.</p>
+               <p>The revamped system now successfully delivers current, relevant 
+               information to the 5,000+ students and faculty who visit the Makerspace 
+               each quarter, transforming what was once a neglected display into a
+                valuable information hub for the entire community.</p>
               <div class="mt-4 flex gap-4">
                   <a href="https://github.com/flashruler/Exploration-of-MobileNetV1-on-CIFAR-10-Dataset" class="text-blue-600 hover:underline">GitHub</a>
               </div>
