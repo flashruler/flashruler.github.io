@@ -42,18 +42,18 @@ document.addEventListener("DOMContentLoaded", () => {
       'Exploration of MobileNetV1 on CIFAR-10 Dataset': {
           title: 'Exploration of MobileNetV1 on CIFAR-10 Dataset',
           description: `
-              <h4 class="text-lg font-bold mb-2">Includes:</h4>
+              <h4 class="text-lg font-bold mb-2">Written Using:</h4>
               <p class="mb-4">Python, PyTorch, Jupyter Notebook, CIFAR-10 Dataset</p>
               <h4 class="text-lg font-bold mb-2">Description:</h4>
 
-              <p>This final project delves into the fascinating world of neural network architectures by investigating the complexity characteristics of the CIFAR-10 image classification dataset by using an implementation of Google's MobileNetV1.</p>
+              <p class="mb-4">This final project delves into the fascinating world of neural network architectures by investigating the complexity characteristics of the CIFAR-10 image classification dataset by using an implementation of Google's MobileNetV1.</p>
 
-              <p>Our work includes:</p>
+              <h4 class="text-lg font-bold mb-2">Our Work Includes:</h4>
               <ul class="list-disc pl-6 mb-4">
-                <li> - Custom implementations of MobileNetV1 optimized for CIFAR-10</li>
-                <li> - Detailed analysis of performance metrics and computational efficiency</li>
-                <li> - Comprehensive insights from various implementations</li>
-                <li> - Strategic recommendations for future architectural improvements</li>
+                <li> Custom implementations of MobileNetV1 optimized for CIFAR-10</li>
+                <li> Detailed analysis of performance metrics and computational efficiency</li>
+                <li> Comprehensive insights from various implementations</li>
+                <li> Strategic recommendations for future architectural improvements</li>
               </ul>
               <div class="mt-4 flex gap-4">
                   <a href="https://github.com/flashruler/Exploration-of-MobileNetV1-on-CIFAR-10-Dataset" class="text-blue-600 hover:underline">GitHub</a>
@@ -67,15 +67,15 @@ document.addEventListener("DOMContentLoaded", () => {
               <p class="mb-4">Typescript, Next.js, NodeJS, PostgreSQL, ExpressJS</p>
               <img src="./assets/digital_bulletin.png" alt="Makerspace Digital Bulletin Board" class="mb-4">
               <h4 class="text-lg font-bold mb-2">Description:</h4>
-              <p>When the UC San Diego Makerspace opened in 2022, its atrium featured a
+              <p class="mb-4">When the UC San Diego Makerspace opened in 2022, its atrium featured a
                TV displaying a simple Google Sites webpage as a digital bulletin board. 
                Over time, updates became infrequent, resulting in outdated and incorrect 
                information being displayed. </p>
-               <p>Recognizing an opportunity for improvement rather than merely updating 
+               <p class="mb-4">Recognizing an opportunity for improvement rather than merely updating 
                content, we developed a comprehensive solution using Next.js, Express.js, 
                and PostgreSQL. This strategic overhaul not only streamlined the update 
                process but also expanded our content capabilities significantly.</p>
-               <p>The revamped system now successfully delivers current, relevant 
+               <p class="mb-4">The revamped system now successfully delivers current, relevant 
                information to the 5,000+ students and faculty who visit the Makerspace 
                each quarter, transforming what was once a neglected display into a
                 valuable information hub for the entire community.</p>
