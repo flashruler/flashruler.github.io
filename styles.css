@@ -1,2 +1,15 @@
 /* Custom styles can be added here if needed */
+body {
+    font-family: 'Courier Prime', monospace;
+}
+
+/* Dialog specific styles */
+#dialogContent p {
+    font-family: ui-sans-serif, system-ui, sans-serif;
+}
+
+#dialogTitle,
+#dialogContent h4 {
+    font-family: 'Courier Prime', monospace;
+}
 
