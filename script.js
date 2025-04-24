@@ -115,6 +115,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 The original notebooks where we did our individual T-SNE and UMAP implementations can be viewed 
                 in "TSNE_IMPLEMENTATION_AGGO.ipynb" and "UMAP_IMPLEMENTATION_AGGO.ipynb" respectively.</p>
               <div class="mt-4 flex gap-4">
+                  <a href="https://reader.edlweiss.me" class="text-blue-600 hover:underline">Check out the live demo!</a>
                   <a href="https://github.com/flashruler/Shoe-Recommendation-using-T-SNE-and-UMAP" class="text-blue-600 hover:underline">Source Code</a>
               </div>
           `
