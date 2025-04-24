@@ -17,6 +17,11 @@ document.addEventListener("DOMContentLoaded", () => {
         description: "A digital bulletin board written in NextJS for the UC San Diego Makerspace.",
         technologies: ["Typescript", "Next.js", "PostgreSQL", "Express.js", "NodeJS"],
       },
+      {
+        title: "Next.js Based Image Proxy Reader",
+        description: "A web-based image proxy and manga reader written in Next.js and Typescript inspired by Cubari.moe.",
+        technologies: ["Typescript", "Next.js"],
+      }
   ]
 
   const projectsContainer = document.querySelector("#projects .grid")
@@ -56,7 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 <li> - Strategic recommendations for future architectural improvements</li>
               </ul>
               <div class="mt-4 flex gap-4">
-                  <a href="https://github.com/flashruler/Exploration-of-MobileNetV1-on-CIFAR-10-Dataset" class="text-blue-600 hover:underline">GitHub</a>
+                  <a href="https://github.com/flashruler/Exploration-of-MobileNetV1-on-CIFAR-10-Dataset" class="text-blue-600 hover:underline">Source Code</a>
               </div>
           `
       },
@@ -67,11 +72,11 @@ document.addEventListener("DOMContentLoaded", () => {
               <p class="mb-4">Typescript, Next.js, NodeJS, PostgreSQL, ExpressJS</p>
               <img src="./assets/digital_bulletin.png" alt="Makerspace Digital Bulletin Board" class="mb-4">
               <h4 class="text-lg font-bold mb-2">Description:</h4>
-              <p>When the UC San Diego Makerspace opened in 2022, its atrium featured a
+              <p class="mb-4">When the UC San Diego Makerspace opened in 2022, its atrium featured a
                TV displaying a simple Google Sites webpage as a digital bulletin board. 
                Over time, updates became infrequent, resulting in outdated and incorrect 
                information being displayed. </p>
-               <p>Recognizing an opportunity for improvement rather than merely updating 
+               <p class="mb-4">Recognizing an opportunity for improvement rather than merely updating 
                content, we developed a comprehensive solution using Next.js, Express.js, 
                and PostgreSQL. This strategic overhaul not only streamlined the update 
                process but also expanded our content capabilities significantly.</p>
@@ -79,6 +84,23 @@ document.addEventListener("DOMContentLoaded", () => {
                information to the 5,000+ students and faculty who visit the Makerspace 
                each quarter, transforming what was once a neglected display into a
                 valuable information hub for the entire community.</p>
+          `
+      },
+      'Next.js Based Image Proxy Reader': {
+          title: 'Next.js Based Image Proxy Reader ',
+          description: `
+              <h4 class="text-lg font-bold mb-2">Written using:</h4>
+              <p class="mb-4">Typescript, Next.js</p>
+              <img src="./assets/proxy_reader.png" alt="Next.js Based Image Proxy Reader" class="mb-4">
+              <h4 class="text-lg font-bold mb-2">Description:</h4>
+              <p class="mb-4">This project is a web-based image proxy and manga reader, built entirely with Next.js and TypeScript and inspired
+               by Cubari.moe. It fetches images from external sources like Imgur or JSON files hosted on GitHub Gists, then displays
+                them in a streamlined, chapter-based format optimized for manga reading. The application features a fully custom, 
+                cross-platform user interface designed to deliver a seamless and visually appealing manga reading experience.</p>
+               <p>A special shoutout goes to <a class="text-blue-600 hover:underline" href="https://cubari.moe/">cubari.moe</a> for being the inspiration for this project.</p>
+               <div class="mt-4 flex gap-4">
+                  <a href="https://github.com/flashruler/proxyreader" class="text-blue-600 hover:underline">Source Code</a>
+              </div>
           `
       },
       'Shoe Recommendation System using T-SNE and UMAP': {
@@ -93,7 +115,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 The original notebooks where we did our individual T-SNE and UMAP implementations can be viewed 
                 in "TSNE_IMPLEMENTATION_AGGO.ipynb" and "UMAP_IMPLEMENTATION_AGGO.ipynb" respectively.</p>
               <div class="mt-4 flex gap-4">
-                  <a href="https://github.com/flashruler/Shoe-Recommendation-using-T-SNE-and-UMAP" class="text-blue-600 hover:underline">GitHub</a>
+                  <a href="https://github.com/flashruler/Shoe-Recommendation-using-T-SNE-and-UMAP" class="text-blue-600 hover:underline">Source Code</a>
               </div>
           `
       }
