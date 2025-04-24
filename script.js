@@ -99,6 +99,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 cross-platform user interface designed to deliver a seamless and visually appealing manga reading experience.</p>
                <p>A special shoutout goes to <a class="text-blue-600 hover:underline" href="https://cubari.moe/">cubari.moe</a> for being the inspiration for this project.</p>
                <div class="mt-4 flex gap-4">
+                  <a href="https://reader.edlweiss.me" class="text-blue-600 hover:underline">Check out the live demo!</a>
                   <a href="https://github.com/flashruler/proxyreader" class="text-blue-600 hover:underline">Source Code</a>
               </div>
           `
@@ -115,7 +116,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 The original notebooks where we did our individual T-SNE and UMAP implementations can be viewed 
                 in "TSNE_IMPLEMENTATION_AGGO.ipynb" and "UMAP_IMPLEMENTATION_AGGO.ipynb" respectively.</p>
               <div class="mt-4 flex gap-4">
-                  <a href="https://reader.edlweiss.me" class="text-blue-600 hover:underline">Check out the live demo!</a>
                   <a href="https://github.com/flashruler/Shoe-Recommendation-using-T-SNE-and-UMAP" class="text-blue-600 hover:underline">Source Code</a>
               </div>
           `
