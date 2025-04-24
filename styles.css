@@ -7,6 +7,9 @@ body {
 #dialogContent p {
     font-family: ui-sans-serif, system-ui, sans-serif;
 }
+#dialogContent li {
+    font-family: ui-sans-serif, system-ui, sans-serif;
+}
 
 #dialogTitle,
 #dialogContent h4 {
