@@ -1,49 +1,135 @@
 document.addEventListener("DOMContentLoaded", () => {
   const projects = [
     {
+        title: "Climbr - Climbing workout tracker & analysis tool",
+        description: "Climbr is an all in one climbing workout tracker and analysis tool. It allows you to track your climbing workouts and analyze your climbs.",
+        technologies: ["Next.js", "Node.js", "Supabase", "tensorflow"],
+        categories: ["web-dev", "ml"],
+        link: "https://github.com/flashruler/Exploration-of-MobileNetV1-on-CIFAR-10-Dataset",
+      },
+    {
       title: "Exploration of MobileNetV1 on CIFAR-10 Dataset",
       description: "This project was the final project written by Jay Buensuceso and Sialoi Ta'a for UC San Diego's COGS 181 Winter 2024 Neural Networks and Deep Learning class taught by Professor Zhuowen Tu.",
       technologies: ["Python", "PyTorch", "Jupyter Notebook", "CIFAR-10"],
+      categories: ["ml"],
       link: "https://github.com/flashruler/Exploration-of-MobileNetV1-on-CIFAR-10-Dataset",
     },
     {
         title: "Shoe Recommendation System using T-SNE and UMAP",
         description: "The final project for UC San Diego's COGS 118B Unsupervised Learning class taught by Professor Jason Fleischer.",
         technologies: ["Python", "Pandas", "Scikit-learn", "T-SNE", "UMAP"],
+        categories: ["ml"],
         link: "https://github.com/flashruler/Shoe-Recommendation-System-using-T-SNE-and-UMAP",
       },
     {
         title: "Makerspace Digital Bulletin Board",
         description: "A digital bulletin board written in NextJS for the UC San Diego Makerspace.",
         technologies: ["Typescript", "Next.js", "PostgreSQL", "Express.js", "NodeJS"],
+        categories: ["web-dev"],
       },
       {
         title: "Next.js Based Image Proxy Reader",
         description: "A web-based image proxy and manga reader written in Next.js and Typescript inspired by Cubari.moe.",
         technologies: ["Typescript", "Next.js"],
+        categories: ["web-dev"],
       }
   ]
 
   const projectsContainer = document.querySelector("#projects .grid")
+  let currentFilter = 'all'
 
-  projects.forEach((project) => {
-    const projectCard = document.createElement("div")
-    projectCard.className = "bg-white p-6 rounded-lg shadow-md project-card cursor-pointer"
-    projectCard.innerHTML = `
-            <h3 class="text-xl font-semibold mb-2">${project.title}</h3>
-            <p class="text-gray-600 mb-4">${project.description}</p>
-            <div class="flex flex-wrap gap-2 mb-4">
-                ${project.technologies.map((tech) => `<span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">${tech}</span>`).join("")}
-            </div>
-        `
-    projectsContainer.appendChild(projectCard)
-  })
+  // Create filter buttons
+  const createFilterButtons = () => {
+    const filterContainer = document.createElement("div")
+    filterContainer.className = "flex flex-wrap gap-2 mb-8 justify-left"
+    filterContainer.innerHTML = `
+      <button class="filter-btn active px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition-colors" data-filter="all">All Projects</button>
+      <button class="filter-btn px-4 py-2 rounded-lg bg-gray-200 text-gray-700 hover:bg-gray-300 transition-colors" data-filter="web-dev">Web Development</button>
+      <button class="filter-btn px-4 py-2 rounded-lg bg-gray-200 text-gray-700 hover:bg-gray-300 transition-colors" data-filter="ml">Machine Learning</button>
+    `
+    
+    // Insert before the projects grid
+    projectsContainer.parentNode.insertBefore(filterContainer, projectsContainer)
+    
+    // Add event listeners to filter buttons
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        // Store current scroll position
+        const currentScrollY = window.scrollY
+        
+        // Update active button styling
+        document.querySelectorAll('.filter-btn').forEach(b => {
+          b.classList.remove('active', 'bg-blue-600', 'text-white')
+          b.classList.add('bg-gray-200', 'text-gray-700')
+        })
+        e.target.classList.remove('bg-gray-200', 'text-gray-700')
+        e.target.classList.add('active', 'bg-blue-600', 'text-white')
+        
+        // Apply filter
+        currentFilter = e.target.dataset.filter
+        renderProjects()
+        
+        // Restore scroll position after a brief delay to allow DOM updates
+        requestAnimationFrame(() => {
+          window.scrollTo(0, currentScrollY)
+        })
+      })
+    })
+  }
+
+  const renderProjects = () => {
+    projectsContainer.innerHTML = ''
+    
+    const filteredProjects = currentFilter === 'all' 
+      ? projects 
+      : projects.filter(project => project.categories.includes(currentFilter))
+
+    filteredProjects.forEach((project) => {
+      const projectCard = document.createElement("div")
+      projectCard.className = "bg-white p-6 rounded-lg shadow-md project-card cursor-pointer transform transition-all duration-300 hover:scale-105"
+      projectCard.innerHTML = `
+              <h3 class="text-xl font-semibold mb-2">${project.title}</h3>
+              <p class="text-gray-600 mb-4">${project.description}</p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                  ${project.technologies.map((tech) => `<span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">${tech}</span>`).join("")}
+              </div>
+          `
+      projectsContainer.appendChild(projectCard)
+    })
+
+    // Re-attach click listeners for project cards
+    attachProjectCardListeners()
+  }
 
   const dialog = document.getElementById('projectDialog');
-  const projectCards = document.querySelectorAll('.project-card');
   const closeButtons = document.querySelectorAll('.close-dialog');
 
   const projectsDetails = {
+
+    'Climbr - Climbing workout tracker & analysis tool': {
+          title: 'Climbr - Climbing workout tracker & analysis tool',
+          description: `
+              <h4 class="text-lg font-bold mb-2">Written Using:</h4>
+              <p class="mb-4">Next.js, Node.js, Supabase, Tensorflow</p>
+              <img src="./assets/climbr.png" alt="Climbr - Climbing workout tracker & analysis tool" class="mb-4">
+              <h4 class="text-lg font-bold mb-2">Description:</h4>
+
+              <p class="mb-4">Climbr is an all in one climbing workout tracker and analysis tool written in Next.js with a supabase databasse backend. It allows you to track your climbing workouts and analyze your climbs.</p>
+              <p class="mb-4">Additionally, this app has a social feature where users can share their workouts to friends and see their progress.</p>
+              <p class="mb-4"> Using Google's Movenet tensorflow model, it uses pose estimations to calculate your balance on the wall, angles of your arms, and graphs the output for a user to analyze their performance.</p>
+
+              <h4 class="text-lg font-bold mb-2">Our Work Includes:</h4>
+              <ul class="list-disc pl-6 mb-4">
+                <li> Custom implementations of Movenet tensorflow model for pose estimation</li>
+                <li> Detailed analysis of climber performance metrics</li>
+                <li> Workout tracking stored in supabase database</li>
+                <li> Friends list and social features</li>
+              </ul>
+              <div class="mt-4 flex gap-4">
+                  <a href="https://climbr.edlweiss.me" class="text-blue-600 hover:underline">Check out the live demo!</a>
+              </div>
+          `
+      },
       'Exploration of MobileNetV1 on CIFAR-10 Dataset': {
           title: 'Exploration of MobileNetV1 on CIFAR-10 Dataset',
           description: `
@@ -123,17 +209,20 @@ document.addEventListener("DOMContentLoaded", () => {
       // Add more projects here
   };
 
-  projectCards.forEach(card => {
-      card.addEventListener('click', () => {
-          const projectTitle = card.querySelector('h3').textContent;
-          const project = projectsDetails[projectTitle];
-          
-          document.getElementById('dialogTitle').textContent = project.title;
-          document.getElementById('dialogContent').innerHTML = project.description;
-          dialog.classList.remove('hidden');
-          dialog.classList.add('flex');
-      });
-  });
+  const attachProjectCardListeners = () => {
+    const projectCards = document.querySelectorAll('.project-card');
+    projectCards.forEach(card => {
+        card.addEventListener('click', () => {
+            const projectTitle = card.querySelector('h3').textContent;
+            const project = projectsDetails[projectTitle];
+            
+            document.getElementById('dialogTitle').textContent = project.title;
+            document.getElementById('dialogContent').innerHTML = project.description;
+            dialog.classList.remove('hidden');
+            dialog.classList.add('flex');
+        });
+    });
+  };
 
   closeButtons.forEach(button => {
       button.addEventListener('click', () => {
@@ -149,5 +238,9 @@ document.addEventListener("DOMContentLoaded", () => {
           dialog.classList.remove('flex');
       }
   });
+
+  // Initialize filter buttons and render projects after dialog setup
+  createFilterButtons()
+  renderProjects()
 })
 
