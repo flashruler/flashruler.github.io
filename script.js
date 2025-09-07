@@ -1,39 +1,57 @@
 document.addEventListener("DOMContentLoaded", () => {
   const projects = [
     {
-        title: "Climbr - Climbing workout tracker & analysis tool",
-        description: "Climbr is an all in one climbing workout tracker and analysis tool. It allows you to track your climbing workouts and analyze your climbs.",
-        technologies: ["Next.js", "Node.js", "Supabase", "tensorflow"],
-        categories: ["web-dev", "ml"],
-        link: "https://github.com/flashruler/Exploration-of-MobileNetV1-on-CIFAR-10-Dataset",
-      },
+      title: "Climbr - Climbing workout tracker & analysis tool",
+      description:
+        "Climbr is an all in one climbing workout tracker and analysis tool. It allows you to track your climbing workouts and analyze your climbs.",
+      technologies: ["Next.js", "Node.js", "Supabase", "tensorflow"],
+      categories: ["web-dev", "ml"],
+      link: "https://github.com/flashruler/Exploration-of-MobileNetV1-on-CIFAR-10-Dataset",
+    },
     {
       title: "Exploration of MobileNetV1 on CIFAR-10 Dataset",
-      description: "This project was the final project written by Jay Buensuceso and Sialoi Ta'a for UC San Diego's COGS 181 Winter 2024 Neural Networks and Deep Learning class taught by Professor Zhuowen Tu.",
+      description:
+        "This project was the final project written by Jay Buensuceso and Sialoi Ta'a for UC San Diego's COGS 181 Winter 2024 Neural Networks and Deep Learning class taught by Professor Zhuowen Tu.",
       technologies: ["Python", "PyTorch", "Jupyter Notebook", "CIFAR-10"],
       categories: ["ml"],
       link: "https://github.com/flashruler/Exploration-of-MobileNetV1-on-CIFAR-10-Dataset",
     },
     {
-        title: "Shoe Recommendation System using T-SNE and UMAP",
-        description: "The final project for UC San Diego's COGS 118B Unsupervised Learning class taught by Professor Jason Fleischer.",
-        technologies: ["Python", "Pandas", "Scikit-learn", "T-SNE", "UMAP"],
-        categories: ["ml"],
-        link: "https://github.com/flashruler/Shoe-Recommendation-System-using-T-SNE-and-UMAP",
-      },
+      title: "Shoe Recommendation System using T-SNE and UMAP",
+      description:
+        "The final project for UC San Diego's COGS 118B Unsupervised Learning class taught by Professor Jason Fleischer.",
+      technologies: ["Python", "Pandas", "Scikit-learn", "T-SNE", "UMAP"],
+      categories: ["ml"],
+      link: "https://github.com/flashruler/Shoe-Recommendation-System-using-T-SNE-and-UMAP",
+    },
     {
-        title: "Makerspace Digital Bulletin Board",
-        description: "A digital bulletin board written in NextJS for the UC San Diego Makerspace.",
-        technologies: ["Typescript", "Next.js", "PostgreSQL", "Express.js", "NodeJS"],
-        categories: ["web-dev"],
-      },
-      {
-        title: "Next.js Based Image Proxy Reader",
-        description: "A web-based image proxy and manga reader written in Next.js and Typescript inspired by Cubari.moe.",
-        technologies: ["Typescript", "Next.js"],
-        categories: ["web-dev"],
-      }
-  ]
+      title: "Makerspace Digital Bulletin Board",
+      description:
+        "A digital bulletin board written in NextJS for the UC San Diego Makerspace.",
+      technologies: [
+        "Typescript",
+        "Next.js",
+        "PostgreSQL",
+        "Express.js",
+        "NodeJS",
+      ],
+      categories: ["web-dev"],
+    },
+    {
+      title: "Next.js Based Image Proxy Reader",
+      description:
+        "A web-based image proxy and manga reader written in Next.js and Typescript inspired by Cubari.moe.",
+      technologies: ["Typescript", "Next.js"],
+      categories: ["web-dev"],
+    },
+    {
+      title: "San Diego FIRST Tech Challenge League Selection",
+      description:
+        "Web application for managing the San Diego FIRST Tech Challenge league selection process.",
+      technologies: ["Typescript", "Next.js", "Convex"],
+      categories: ["web-dev"],
+    },
+  ];
 
   const projectsContainer = document.querySelector("#projects .grid")
   let currentFilter = 'all'
@@ -105,10 +123,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const closeButtons = document.querySelectorAll('.close-dialog');
 
   const projectsDetails = {
-
-    'Climbr - Climbing workout tracker & analysis tool': {
-          title: 'Climbr - Climbing workout tracker & analysis tool',
-          description: `
+    "Climbr - Climbing workout tracker & analysis tool": {
+      title: "Climbr - Climbing workout tracker & analysis tool",
+      description: `
               <h4 class="text-lg font-bold mb-2">Written Using:</h4>
               <p class="mb-4">Next.js, Node.js, Supabase, Tensorflow</p>
               <img src="./assets/climbr.png" alt="Climbr - Climbing workout tracker & analysis tool" class="mb-4">
@@ -128,11 +145,11 @@ document.addEventListener("DOMContentLoaded", () => {
               <div class="mt-4 flex gap-4">
                   <a href="https://climbr.edlweiss.me" class="text-blue-600 hover:underline">Check out the live demo!</a>
               </div>
-          `
-      },
-      'Exploration of MobileNetV1 on CIFAR-10 Dataset': {
-          title: 'Exploration of MobileNetV1 on CIFAR-10 Dataset',
-          description: `
+          `,
+    },
+    "Exploration of MobileNetV1 on CIFAR-10 Dataset": {
+      title: "Exploration of MobileNetV1 on CIFAR-10 Dataset",
+      description: `
               <h4 class="text-lg font-bold mb-2">Written Using:</h4>
               <p class="mb-4">Python, PyTorch, Jupyter Notebook, CIFAR-10 Dataset</p>
               <h4 class="text-lg font-bold mb-2">Description:</h4>
@@ -149,11 +166,11 @@ document.addEventListener("DOMContentLoaded", () => {
               <div class="mt-4 flex gap-4">
                   <a href="https://github.com/flashruler/Exploration-of-MobileNetV1-on-CIFAR-10-Dataset" class="text-blue-600 hover:underline">Source Code</a>
               </div>
-          `
-      },
-      'Makerspace Digital Bulletin Board': {
-          title: 'Makerspace Digital Bulletin Board',
-          description: `
+          `,
+    },
+    "Makerspace Digital Bulletin Board": {
+      title: "Makerspace Digital Bulletin Board",
+      description: `
               <h4 class="text-lg font-bold mb-2">Written using:</h4>
               <p class="mb-4">Typescript, Next.js, NodeJS, PostgreSQL, ExpressJS</p>
               <img src="./assets/digital_bulletin.png" alt="Makerspace Digital Bulletin Board" class="mb-4">
@@ -170,11 +187,11 @@ document.addEventListener("DOMContentLoaded", () => {
                information to the 5,000+ students and faculty who visit the Makerspace 
                each quarter, transforming what was once a neglected display into a
                 valuable information hub for the entire community.</p>
-          `
-      },
-      'Next.js Based Image Proxy Reader': {
-          title: 'Next.js Based Image Proxy Reader ',
-          description: `
+          `,
+    },
+    "Next.js Based Image Proxy Reader": {
+      title: "Next.js Based Image Proxy Reader ",
+      description: `
               <h4 class="text-lg font-bold mb-2">Written using:</h4>
               <p class="mb-4">Typescript, Next.js</p>
               <img src="./assets/proxy_reader.png" alt="Next.js Based Image Proxy Reader" class="mb-4">
@@ -188,11 +205,26 @@ document.addEventListener("DOMContentLoaded", () => {
                   <a href="https://reader.edlweiss.me" class="text-blue-600 hover:underline">Check out the live demo!</a>
                   <a href="https://github.com/flashruler/proxyreader" class="text-blue-600 hover:underline">Source Code</a>
               </div>
-          `
-      },
-      'Shoe Recommendation System using T-SNE and UMAP': {
-          title: 'Shoe Recommendation System using T-SNE and UMAP',
-          description: `
+          `,
+    },
+    "San Diego FIRST Tech Challenge League Selection": {
+      title: "San Diego FIRST Tech Challenge League Selection",
+      description: `
+              <h4 class="text-lg font-bold mb-2">Written using:</h4>
+              <p class="mb-4">Typescript, Next.js, Convex</p>
+              <img src="./assets/ftc_league_selection.png" alt="Image coming soon" class="mb-4">
+              <h4 class="text-lg font-bold mb-2">Description:</h4>
+              <p class="mb-4">This web application was developed to streamline and manage the league selection process for the San Diego FIRST Tech Challenge Metro league system. 
+              Originally written with a MongoDB database, it was later migrated to utilize a Convex database - a new reactive database that allows for real-time updates and improved performance
+               written entirely in TypeScript.</p>
+               <div class="mt-4 flex gap-4">
+                  <a href="https://leagueselection.edlweiss.me" class="text-blue-600 hover:underline">Live Website</a>
+              </div>
+          `,
+    },
+    "Shoe Recommendation System using T-SNE and UMAP": {
+      title: "Shoe Recommendation System using T-SNE and UMAP",
+      description: `
               <h4 class="text-lg font-bold mb-2">Written using:</h4>
               <p class="mb-4">Python, Pandas, Scikit-learn, T-SNE, UMAP</p>
               <img src="./assets/umap_tsne_cluster_2.png" alt="Shoe Recommendation System using T-SNE and UMAP" class="mb-4">
@@ -204,9 +236,9 @@ document.addEventListener("DOMContentLoaded", () => {
               <div class="mt-4 flex gap-4">
                   <a href="https://github.com/flashruler/Shoe-Recommendation-using-T-SNE-and-UMAP" class="text-blue-600 hover:underline">Source Code</a>
               </div>
-          `
-      }
-      // Add more projects here
+          `,
+    },
+    // Add more projects here
   };
 
   const attachProjectCardListeners = () => {
