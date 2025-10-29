@@ -212,11 +212,10 @@ document.addEventListener("DOMContentLoaded", () => {
       description: `
               <h4 class="text-lg font-bold mb-2">Written using:</h4>
               <p class="mb-4">Typescript, Next.js, Convex</p>
-              <img src="./assets/ftc_league_selection.png" alt="Image coming soon" class="mb-4">
+              <img src="./assets/sdftc_league_selection.png" alt="Image coming soon" class="mb-4">
               <h4 class="text-lg font-bold mb-2">Description:</h4>
-              <p class="mb-4">This web application was developed to streamline and manage the league selection process for the San Diego FIRST Tech Challenge Metro league system. 
-              Originally written with a MongoDB database, it was later migrated to utilize a Convex database - a new reactive database that allows for real-time updates and improved performance
-               written entirely in TypeScript.</p>
+              <p class="mb-4">Developed to streamline and manage the league selection process for the San Diego FIRST Tech Challenge, this application is an active fork of the project that originally started life as JuicyData in 2019. </p>
+              <p class="mb-4">Previous iterations of league selection utilized mongoDB for its backend database however, with the release of Convex a new reactive database that allows for real-time updates, the project migrated all its data towards its utilization.</p>
                <div class="mt-4 flex gap-4">
                   <a href="https://leagueselection.edlweiss.me" class="text-blue-600 hover:underline">Live Website</a>
               </div>
