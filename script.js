@@ -1,6 +1,20 @@
 document.addEventListener("DOMContentLoaded", () => {
   const projects = [
     {
+      title: "San Diego FIRST Tech Challenge League Selection",
+      description:
+        "Web application for managing the San Diego FIRST Tech Challenge league selection process.",
+      technologies: ["Typescript", "Next.js", "Convex"],
+      categories: ["web-dev"],
+    },
+    {
+      title: "Iris - Network Packet Analyzer",
+      description:
+        "Network Packet Analyzer Dashboard for monitoring and analyzing network traffic in real-time.",
+      technologies: ["Typescript", "Vite", "React.js", "Python", "FastAPI", "Tshark", "Docker"],
+      categories: ["web-dev"],
+    },
+    {
       title: "Climbr - Climbing workout tracker & analysis tool",
       description:
         "Climbr is an all in one climbing workout tracker and analysis tool. It allows you to track your climbing workouts and analyze your climbs.",
@@ -44,83 +58,83 @@ document.addEventListener("DOMContentLoaded", () => {
       technologies: ["Typescript", "Next.js"],
       categories: ["web-dev"],
     },
-    {
-      title: "San Diego FIRST Tech Challenge League Selection",
-      description:
-        "Web application for managing the San Diego FIRST Tech Challenge league selection process.",
-      technologies: ["Typescript", "Next.js", "Convex"],
-      categories: ["web-dev"],
-    },
   ];
 
-  const projectsContainer = document.querySelector("#projects .grid")
-  let currentFilter = 'all'
+  const projectsContainer = document.querySelector("#projects .grid");
+  let currentFilter = "all";
 
   // Create filter buttons
   const createFilterButtons = () => {
-    const filterContainer = document.createElement("div")
-    filterContainer.className = "flex flex-wrap gap-2 mb-8 justify-left"
+    const filterContainer = document.createElement("div");
+    filterContainer.className = "flex flex-wrap gap-2 mb-8 justify-left";
     filterContainer.innerHTML = `
       <button class="filter-btn active px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition-colors" data-filter="all">All Projects</button>
       <button class="filter-btn px-4 py-2 rounded-lg bg-gray-200 text-gray-700 hover:bg-gray-300 transition-colors" data-filter="web-dev">Web Development</button>
       <button class="filter-btn px-4 py-2 rounded-lg bg-gray-200 text-gray-700 hover:bg-gray-300 transition-colors" data-filter="ml">Machine Learning</button>
-    `
-    
+    `;
+
     // Insert before the projects grid
-    projectsContainer.parentNode.insertBefore(filterContainer, projectsContainer)
-    
+    projectsContainer.parentNode.insertBefore(
+      filterContainer,
+      projectsContainer,
+    );
+
     // Add event listeners to filter buttons
-    document.querySelectorAll('.filter-btn').forEach(btn => {
-      btn.addEventListener('click', (e) => {
+    document.querySelectorAll(".filter-btn").forEach((btn) => {
+      btn.addEventListener("click", (e) => {
         // Store current scroll position
-        const currentScrollY = window.scrollY
-        
+        const currentScrollY = window.scrollY;
+
         // Update active button styling
-        document.querySelectorAll('.filter-btn').forEach(b => {
-          b.classList.remove('active', 'bg-blue-600', 'text-white')
-          b.classList.add('bg-gray-200', 'text-gray-700')
-        })
-        e.target.classList.remove('bg-gray-200', 'text-gray-700')
-        e.target.classList.add('active', 'bg-blue-600', 'text-white')
-        
+        document.querySelectorAll(".filter-btn").forEach((b) => {
+          b.classList.remove("active", "bg-blue-600", "text-white");
+          b.classList.add("bg-gray-200", "text-gray-700");
+        });
+        e.target.classList.remove("bg-gray-200", "text-gray-700");
+        e.target.classList.add("active", "bg-blue-600", "text-white");
+
         // Apply filter
-        currentFilter = e.target.dataset.filter
-        renderProjects()
-        
+        currentFilter = e.target.dataset.filter;
+        renderProjects();
+
         // Restore scroll position after a brief delay to allow DOM updates
         requestAnimationFrame(() => {
-          window.scrollTo(0, currentScrollY)
-        })
-      })
-    })
-  }
+          window.scrollTo(0, currentScrollY);
+        });
+      });
+    });
+  };
 
   const renderProjects = () => {
-    projectsContainer.innerHTML = ''
-    
-    const filteredProjects = currentFilter === 'all' 
-      ? projects 
-      : projects.filter(project => project.categories.includes(currentFilter))
+    projectsContainer.innerHTML = "";
+
+    const filteredProjects =
+      currentFilter === "all"
+        ? projects
+        : projects.filter((project) =>
+            project.categories.includes(currentFilter),
+          );
 
     filteredProjects.forEach((project) => {
-      const projectCard = document.createElement("div")
-      projectCard.className = "bg-white p-6 rounded-lg shadow-md project-card cursor-pointer transform transition-all duration-300 hover:scale-105"
+      const projectCard = document.createElement("div");
+      projectCard.className =
+        "bg-white p-6 rounded-lg shadow-md project-card cursor-pointer transform transition-all duration-300 hover:scale-105";
       projectCard.innerHTML = `
               <h3 class="text-xl font-semibold mb-2">${project.title}</h3>
               <p class="text-gray-600 mb-4">${project.description}</p>
               <div class="flex flex-wrap gap-2 mb-4">
                   ${project.technologies.map((tech) => `<span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">${tech}</span>`).join("")}
               </div>
-          `
-      projectsContainer.appendChild(projectCard)
-    })
+          `;
+      projectsContainer.appendChild(projectCard);
+    });
 
     // Re-attach click listeners for project cards
-    attachProjectCardListeners()
-  }
+    attachProjectCardListeners();
+  };
 
-  const dialog = document.getElementById('projectDialog');
-  const closeButtons = document.querySelectorAll('.close-dialog');
+  const dialog = document.getElementById("projectDialog");
+  const closeButtons = document.querySelectorAll(".close-dialog");
 
   const projectsDetails = {
     "Climbr - Climbing workout tracker & analysis tool": {
@@ -241,37 +255,37 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   const attachProjectCardListeners = () => {
-    const projectCards = document.querySelectorAll('.project-card');
-    projectCards.forEach(card => {
-        card.addEventListener('click', () => {
-            const projectTitle = card.querySelector('h3').textContent;
-            const project = projectsDetails[projectTitle];
-            
-            document.getElementById('dialogTitle').textContent = project.title;
-            document.getElementById('dialogContent').innerHTML = project.description;
-            dialog.classList.remove('hidden');
-            dialog.classList.add('flex');
-        });
+    const projectCards = document.querySelectorAll(".project-card");
+    projectCards.forEach((card) => {
+      card.addEventListener("click", () => {
+        const projectTitle = card.querySelector("h3").textContent;
+        const project = projectsDetails[projectTitle];
+
+        document.getElementById("dialogTitle").textContent = project.title;
+        document.getElementById("dialogContent").innerHTML =
+          project.description;
+        dialog.classList.remove("hidden");
+        dialog.classList.add("flex");
+      });
     });
   };
 
-  closeButtons.forEach(button => {
-      button.addEventListener('click', () => {
-          dialog.classList.add('hidden');
-          dialog.classList.remove('flex');
-      });
+  closeButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      dialog.classList.add("hidden");
+      dialog.classList.remove("flex");
+    });
   });
 
   // Close dialog when clicking outside
-  dialog.addEventListener('click', (e) => {
-      if (e.target === dialog) {
-          dialog.classList.add('hidden');
-          dialog.classList.remove('flex');
-      }
+  dialog.addEventListener("click", (e) => {
+    if (e.target === dialog) {
+      dialog.classList.add("hidden");
+      dialog.classList.remove("flex");
+    }
   });
 
   // Initialize filter buttons and render projects after dialog setup
-  createFilterButtons()
-  renderProjects()
-})
-
+  createFilterButtons();
+  renderProjects();
+});
