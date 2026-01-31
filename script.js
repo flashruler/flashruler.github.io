@@ -161,6 +161,26 @@ document.addEventListener("DOMContentLoaded", () => {
               </div>
           `,
     },
+        "Iris - Network Packet Analyzer": {
+      title: "Iris - Network Packet Analyzer",
+      description: `
+              <h4 class="text-lg font-bold mb-2">Written Using:</h4>
+              <p class="mb-4">Vite, React.js, Python, FastAPI, Tshark, Docker</p>
+              <img src="./assets/iris.png" alt="Iris - Network Packet Analyzer" class="mb-4">
+              <h4 class="text-lg font-bold mb-2">Description:</h4>
+
+              <p class="mb-4">Iris is a network packet analyzer tool written in Vite and React.js, allowing the user to capture and analyze network packets in real-time.</p>
+              <p class="mb-4"> Using a python backend running tshark commands, it provides detailed insights into network traffic for a user to analyze their network performance.</p>
+
+              <h4 class="text-lg font-bold mb-2">Our Work Includes:</h4>
+              <ul class="list-disc pl-6 mb-4">
+                <li> Custom implementations of Movenet tensorflow model for pose estimation</li>
+                <li> Detailed analysis of climber performance metrics</li>
+                <li> Workout tracking stored in supabase database</li>
+                <li> Friends list and social features</li>
+              </ul>
+          `,
+    },
     "Exploration of MobileNetV1 on CIFAR-10 Dataset": {
       title: "Exploration of MobileNetV1 on CIFAR-10 Dataset",
       description: `
