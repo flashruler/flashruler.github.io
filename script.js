@@ -1,4 +1,49 @@
 document.addEventListener("DOMContentLoaded", () => {
+  const themeToggle = document.getElementById("theme-toggle");
+
+  const updateThemeToggle = (theme) => {
+    if (!themeToggle) {
+      return;
+    }
+
+    const icon = themeToggle.querySelector(".theme-toggle-icon");
+    const text = themeToggle.querySelector(".theme-toggle-text");
+    const isDark = theme === "dark";
+
+    themeToggle.setAttribute("aria-pressed", isDark ? "true" : "false");
+
+    if (icon) {
+      icon.textContent = isDark ? "☀️" : "🌙";
+    }
+    if (text) {
+      text.textContent = isDark ? "Light mode" : "Dark mode";
+    }
+  };
+
+  const setTheme = (theme) => {
+    if (theme === "dark") {
+      document.documentElement.classList.add("theme-dark");
+    } else {
+      document.documentElement.classList.remove("theme-dark");
+    }
+
+    localStorage.setItem("theme", theme);
+    updateThemeToggle(theme);
+  };
+
+  const initialTheme = document.documentElement.classList.contains("theme-dark")
+    ? "dark"
+    : "light";
+
+  updateThemeToggle(initialTheme);
+
+  if (themeToggle) {
+    themeToggle.addEventListener("click", () => {
+      const isDark = document.documentElement.classList.contains("theme-dark");
+      setTheme(isDark ? "light" : "dark");
+    });
+  }
+
   const projects = [
     {
       title: "San Diego FIRST Tech Challenge League Selection",
