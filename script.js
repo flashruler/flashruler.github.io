@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", () => {
       title: "San Diego FIRST Tech Challenge League Selection",
       description:
         "Web application for managing the San Diego FIRST Tech Challenge league selection process.",
-      technologies: ["Typescript", "Next.js", "Convex"],
+      technologies: ["Typescript", "Next.js", "Convex","resend"],
       categories: ["web-dev"],
     },
     {
@@ -57,6 +57,13 @@ document.addEventListener("DOMContentLoaded", () => {
       description:
         "Network Packet Analyzer Dashboard for monitoring and analyzing network traffic in real-time.",
       technologies: ["Typescript", "Vite", "React.js", "Python", "FastAPI", "Tshark", "Docker"],
+      categories: ["web-dev"],
+    },
+    {
+      title: "Printfarm - 3D Printing Farm Management System",
+      description:
+        "3D Printing Farm Management System for monitoring and managing multiple 3D printers.",
+      technologies: ["Typescript", "Vite", "React.js", "Python", "FastAPI"],
       categories: ["web-dev"],
     },
     {
