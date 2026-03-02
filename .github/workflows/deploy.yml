@@ -62,8 +62,8 @@ jobs:
           # 4. Handle 404 for React Router (copy index.html to 404.html)
           # We only want the React 404 for the docs subdomain, but since GH Pages
           # uses a single 404, we prioritize the React one if it exists.
-          if [ -f "_site/index.html" ]; then
-            cp _site/index.html _site/404.html
+          if [ -f "docs-app/dist/index.html" ]; then
+            cp docs-app/dist/index.html _site/404.html
           fi
 
       - name: Upload Artifact
