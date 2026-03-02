@@ -57,7 +57,8 @@ jobs:
           # 2. Copy main site folders (excluding docs-app and .github)
           cp -r assets _site/ 2>/dev/null || true
           # 3. Copy the built React docs
-          cp -r docs-app/dist/* _site/
+          mkdir -p _site/docs
+          cp -r docs-app/dist/* _site/docs/
           # 4. Handle 404 for React Router (copy index.html to 404.html)
           # We only want the React 404 for the docs subdomain, but since GH Pages
           # uses a single 404, we prioritize the React one if it exists.
