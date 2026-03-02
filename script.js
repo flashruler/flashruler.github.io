@@ -208,9 +208,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 <li> Workout tracking stored in supabase database</li>
                 <li> Friends list and social features</li>
               </ul>
-              <div class="mt-4 flex gap-4">
-                  <a href="https://climbr.edlweiss.me" class="text-blue-600 hover:underline">Check out the live demo!</a>
-              </div>
           `,
     },
         "Iris - Network Packet Analyzer": {
