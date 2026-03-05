@@ -1,12 +1,8 @@
-# .github/workflows/deploy.yml
-name: Deploy Site and Docs
+name: Deploy Site
 
 on:
   push:
     branches: ["main"]
-
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
 
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
@@ -35,48 +31,24 @@ jobs:
         with:
           node-version: "20"
           cache: "pnpm"
-          cache-dependency-path: "./docs-app/pnpm-lock.yaml"
+          cache-dependency-path: "./pnpm-lock.yaml"
 
-      - name: Install Portfolio Dependencies
-        run: npm ci
-
-      - name: Build Portfolio Styles
-        run: npm run build
-
-      - name: Install React Docs Dependencies
+      - name: Install Dependencies
         run: pnpm install --frozen-lockfile
-        working-directory: ./docs-app
 
-      - name: Build React Docs
-        run: pnpm run build
-        working-directory: ./docs-app
+      - name: Build Site
+        run: pnpm build
+
+      - name: Add SPA fallback
+        run: cp dist/index.html dist/404.html
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
 
-      - name: Prepare Final Artifact
-        # This merges your static site + the built react docs
-        run: |
-          mkdir -p _site
-          # 1. Copy main site files (root files, excluding docs-app and .github)
-          find . -maxdepth 1 -type f -exec cp -t _site {} +
-          # 2. Copy main site folders (excluding docs-app and .github)
-          cp -r assets _site/ 2>/dev/null || true
-          cp -r dist _site/ 2>/dev/null || true
-          # 3. Copy the built React docs
-          mkdir -p _site/docs
-          cp -r docs-app/dist/* _site/docs/
-          # 4. Handle 404 for React Router (copy index.html to 404.html)
-          # We only want the React 404 for the docs subdomain, but since GH Pages
-          # uses a single 404, we prioritize the React one if it exists.
-          if [ -f "docs-app/dist/index.html" ]; then
-            cp docs-app/dist/index.html _site/404.html
-          fi
-
       - name: Upload Artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: "_site"
+          path: "dist"
 
   deploy:
     environment:
