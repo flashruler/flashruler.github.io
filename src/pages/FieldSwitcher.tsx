@@ -139,7 +139,7 @@ export default function FieldSwitcher() {
         <CardHeader>
           <CardTitle>FTC Field Switcher for OBS</CardTitle>
           <CardDescription>
-            Automatic Field Switcher for FTC using OBS Websocket and FTC Scoring API.
+            Automatic Field Switcher for FTC using OBS Websocket and Local FTC Scoring API.
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-6">
