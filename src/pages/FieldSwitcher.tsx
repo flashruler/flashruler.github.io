@@ -107,31 +107,123 @@ export default function FieldSwitcher() {
     }
 
     if (lastAppliedField === decision.mappedValue) {
-      setLastAction(`Already on field ${lastAppliedField}.`);
-      return;
+      // Note: We don't return early here anymore because an API override during MATCH_START might change the target
+      // We will check lastAppliedField again before switching.
+      console.log(`Currently on field ${lastAppliedField} - will evaluate further to see if override happens.`);
     }
 
-    const targetScene = decision.mappedValue === 1 ? sceneA.trim() : sceneB.trim();
+    let targetField = decision.mappedValue;
+    let targetScene = targetField === 1 ? sceneA.trim() : sceneB.trim();
+
     if (!targetScene) {
-      setLastAction(
-        `Received field ${decision.mappedValue}, but target scene is not configured.`
-      );
+      setLastAction(`Received field ${targetField}, but target scene is not configured.`);
       return;
     }
 
-    setProgramScene(targetScene)
-      .then(() => {
-        setLastAppliedField(decision.mappedValue);
-        setLastAction(
-          `MATCH_LOAD field ${decision.mappedValue} switched to scene: ${targetScene}`
-        );
-      })
-      .catch((sceneError) => {
-        setLastAction(
-          sceneError instanceof Error ? sceneError.message : "Failed to switch OBS scene."
-        );
-      });
-  }, [isConnected, lastAppliedField, lastMessage, sceneA, sceneB, setProgramScene]);
+    const handleFieldSwitch = async () => {
+      const normalizedIp = ftcIp.trim() || DEFAULT_FTC_IP;
+      const code = encodeURIComponent(ftcCode.trim());
+
+      try {
+        setLastAction(`Checking active match for event ${code}...`);
+        
+        const response = await fetch(`http://${normalizedIp}/api/v1/events/${code}/matches/active/`);
+        let shouldSkip = false;
+        let finalActionMessage = `${decision.updateType} field ${targetField} switched to scene: ${targetScene}`;
+        
+        if (response.ok) {
+          const activeMatchData = await response.json();
+          // Normalize the response into an array of matches
+          const matches = Array.isArray(activeMatchData.matches) 
+            ? activeMatchData.matches 
+            : [activeMatchData];
+
+          console.log("Active matches details:", matches);
+
+          // Find if ANY match is currently playing
+          const playingMatch = matches.find((match: any) => 
+            match?.matchState === "AUTO" || match?.matchState === "TELEOP"
+          );
+
+          if (decision.updateType === "MATCH_START" || decision.updateType === "SHOW_MATCH") {
+            const trueMatch = playingMatch || matches[0];
+            const currentNumber = trueMatch?.matchNumber;
+            const apiField = trueMatch?.field;
+            const wsNumber = decision.matchNumber;
+
+            console.log(`[${decision.updateType}] API match number: ${currentNumber}, WS match number: ${wsNumber}`);
+
+            if (currentNumber !== undefined && wsNumber !== null && currentNumber !== wsNumber) {
+              console.log(`Mismatch detected. Using API field (${apiField}) as truth instead of WS field.`);
+              if (apiField === 1 || apiField === 2) {
+                targetField = apiField as 1 | 2;
+                targetScene = targetField === 1 ? sceneA.trim() : sceneB.trim();
+                
+                if (!targetScene) {
+                  console.log("Overridden target scene is not configured, skipping.");
+                  shouldSkip = true;
+                } else if (targetField === lastAppliedField) {
+                  console.log(`Overridden field ${targetField} is already active, skipping.`);
+                  shouldSkip = true;
+                } else {
+                  finalActionMessage = `${decision.updateType} mismatch: Overrode WS with API truth, switching field ${targetField} to scene: ${targetScene}`;
+                }
+              }
+            } else {
+              // Same number, normal switch checking
+              if (targetField === lastAppliedField) {
+                console.log(`Already on field ${lastAppliedField}, skipping.`);
+                shouldSkip = true;
+              }
+            }
+          } else {
+            // MATCH_LOAD logic
+            if (targetField === lastAppliedField) {
+              console.log(`Already on field ${lastAppliedField}, skipping.`);
+              shouldSkip = true;
+            } else if (playingMatch) {
+              const currentNumber = playingMatch.matchNumber;
+              const wsNumber = decision.matchNumber;
+
+              console.log(`Found playing match number: ${currentNumber}, WS match number: ${wsNumber}`);
+
+              if (currentNumber !== undefined && wsNumber !== null && currentNumber !== wsNumber) {
+                shouldSkip = true;
+                console.log("Blocking field switch: An active match is playing and does not match the WS matchNumber.");
+              } else {
+                console.log("Allowing field switch: Playing match number matches WS matchNumber.");
+              }
+            } else {
+              console.log("Allowing field switch: No matches are in AUTO or TELEOP state.");
+            }
+          }
+        } else {
+          // If response not ok, fallback to simple check
+          if (targetField === lastAppliedField) {
+            shouldSkip = true;
+          }
+        }
+
+        if (shouldSkip) {
+          console.log("Switch explicitly blocked or redundant.");
+          if (targetField === lastAppliedField) {
+            setLastAction(`Already on field ${lastAppliedField}.`);
+          } else {
+            setLastAction(`Skipped switch during ${decision.updateType}: Active match blocked via API check.`);
+          }
+          return;
+        }
+
+        await setProgramScene(targetScene);
+        setLastAppliedField(targetField);
+        setLastAction(finalActionMessage);
+      } catch (error) {
+        setLastAction(error instanceof Error ? error.message : "Failed to switch OBS scene or fetch match status.");
+      }
+    };
+
+    handleFieldSwitch();
+  }, [isConnected, lastAppliedField, lastMessage, sceneA, sceneB, setProgramScene, ftcIp, ftcCode]);
 
   return (
     <div className="container mx-auto mt-8 px-4 max-w-4xl pb-8">

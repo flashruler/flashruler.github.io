@@ -1,5 +1,6 @@
 type FtcPayload = {
   field?: unknown;
+  number?: unknown;
 };
 
 type FtcMessage = {
@@ -11,6 +12,7 @@ export type FtcFieldDecision = {
   updateType: string | null;
   field: number | null;
   mappedValue: 1 | 2 | null;
+  matchNumber: number | null;
   reason: string;
 };
 
@@ -24,6 +26,7 @@ export function getFieldSwitchDecision(rawMessage: string): FtcFieldDecision {
       updateType: null,
       field: null,
       mappedValue: null,
+      matchNumber: null,
       reason: "Invalid JSON message.",
     };
   }
@@ -33,6 +36,7 @@ export function getFieldSwitchDecision(rawMessage: string): FtcFieldDecision {
       updateType: null,
       field: null,
       mappedValue: null,
+      matchNumber: null,
       reason: "Unexpected message shape.",
     };
   }
@@ -40,16 +44,19 @@ export function getFieldSwitchDecision(rawMessage: string): FtcFieldDecision {
   const message = parsed as FtcMessage;
   const updateType = typeof message.updateType === "string" ? message.updateType : null;
 
-  if (updateType !== "MATCH_LOAD") {
+  if (!updateType || !["MATCH_LOAD", "MATCH_START", "SHOW_MATCH"].includes(updateType)) {
     return {
       updateType,
       field: null,
       mappedValue: null,
-      reason: "Ignored non-MATCH_LOAD event.",
+      matchNumber: null,
+      reason: `Ignored unhandled event type: ${updateType || "unknown"}.`,
     };
   }
 
   const fieldRaw = message.payload?.field;
+  const numberRaw = message.payload?.number;
+
   const field =
     typeof fieldRaw === "number"
       ? fieldRaw
@@ -57,12 +64,20 @@ export function getFieldSwitchDecision(rawMessage: string): FtcFieldDecision {
       ? Number(fieldRaw)
       : NaN;
 
+  const matchNumber =
+    typeof numberRaw === "number"
+      ? numberRaw
+      : typeof numberRaw === "string" && numberRaw.trim() !== ""
+      ? Number(numberRaw)
+      : null;
+
   if (!Number.isFinite(field)) {
     return {
       updateType,
       field: null,
       mappedValue: null,
-      reason: "MATCH_LOAD missing numeric payload.field.",
+      matchNumber,
+      reason: "Missing numeric payload.field.",
     };
   }
 
@@ -71,7 +86,8 @@ export function getFieldSwitchDecision(rawMessage: string): FtcFieldDecision {
       updateType,
       field,
       mappedValue: field,
-      reason: "Mapped MATCH_LOAD field to scene value.",
+      matchNumber,
+      reason: "Mapped match field to scene value.",
     };
   }
 
@@ -79,6 +95,7 @@ export function getFieldSwitchDecision(rawMessage: string): FtcFieldDecision {
     updateType,
     field,
     mappedValue: null,
+    matchNumber,
     reason: "Field value is not mapped (only 1 or 2).",
   };
 }
