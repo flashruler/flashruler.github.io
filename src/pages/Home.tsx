@@ -21,8 +21,8 @@ export default function Home() {
   );
 
   return (
-    <div className="container mx-auto mt-8 px-4 max-w-6xl relative">
-      <div className="bgLines" aria-hidden="true"></div>
+    <div className="container mx-auto mt-8 px-4 w-screen relative">
+      {/* <div className="bgLines" aria-hidden="true"></div> */}
       <section id="about" className="mb-12 max-w-2xl relative z-10">
         <h2 className="text-3xl font-bold mb-4">
           Hello &mdash; I'm Jay, a software developer interested in full-stack
@@ -97,9 +97,14 @@ export default function Home() {
       </section>
       <section id="contact" className="mb-12">
         <h2 className="text-3xl font-bold mb-4">Volunteering</h2>
-        <p className="text-lg text-muted-foreground">
-          Here are the FIRST events I have volunteered at as a technical volunteer. I have been a volunteer for 6 years and I enjoy helping teams with their technical issues and seeing their robots in action!
+        <p className="text-lg text-muted-foreground mb-2">
+          Here are the FIRST events I have volunteered at as a technical volunteer.
+          In total I have over <strong>500 hours</strong> of volunteering experience and volunteered at <strong>2 FIRST Championships</strong>, <strong>5 Regional Championships</strong>, and <strong>1 Invitational</strong>. 
         </p>
+        <ul> 2025-2026
+          <li className="ml-4 list-disc text-lg text-muted-foreground">San Diego Regional League Meets & Championship - Lead FIRST Technical Advisor</li>
+          <li className="ml-4 list-disc text-lg text-muted-foreground">Upcoming: Western Edge Premier Event - FIRST Technical Advisor</li>
+        </ul>
         <ul> 2024-2025
           <li className="ml-4 list-disc text-lg text-muted-foreground">San Diego Regional League Meets & Championship - Lead FIRST Technical Advisor</li>
           <li className="ml-4 list-disc text-lg text-muted-foreground">FIRST Championship - Control System Advisor and FIRST Technical Advisor

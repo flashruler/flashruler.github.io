@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route, Navigate, useLocation } from "react-router-dom";
 import { ThemeProvider } from "./components/ThemeProvider";
 import { Navbar } from "./components/Navbar";
+import { Footer } from "./components/Footer";
 import { DocsRouter } from "./docs";
 import Home from "./pages/Home";
 import Resume from "./pages/Resume";
@@ -22,6 +23,7 @@ function AppLayout() {
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </main>
+      {!isDocs && <Footer />}
     </div>
   );
 }
