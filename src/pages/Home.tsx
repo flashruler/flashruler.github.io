@@ -95,6 +95,34 @@ export default function Home() {
           ))}
         </div>
       </section>
+      <section id="contact" className="mb-12">
+        <h2 className="text-3xl font-bold mb-4">Volunteering</h2>
+        <p className="text-lg text-muted-foreground">
+          Here are the FIRST events I have volunteered at as a technical volunteer. I have been a volunteer for 6 years and I enjoy helping teams with their technical issues and seeing their robots in action!
+        </p>
+        <ul> 2024-2025
+          <li className="ml-4 list-disc text-lg text-muted-foreground">San Diego Regional League Meets & Championship - Lead FIRST Technical Advisor</li>
+          <li className="ml-4 list-disc text-lg text-muted-foreground">FIRST Championship - Control System Advisor and FIRST Technical Advisor
+          </li>
+          <li className="ml-4 list-disc text-lg text-muted-foreground">Cowtown Invitational - FIRST Technical Advisor</li>
+        </ul>
+        <ul> 2023-2024
+          <li className="ml-4 list-disc text-lg text-muted-foreground">San Diego Regional League Meets & Championship - Lead FIRST Technical Advisor</li>
+        </ul>
+        <ul> 2022-2023
+          <li className="ml-4 list-disc text-lg text-muted-foreground">San Diego Regional League Meets & Championship - Lead FIRST Technical Advisor</li>
+          <li className="ml-4 list-disc text-lg text-muted-foreground">FIRST Championship - Control System Advisor, Wifi Technical Advisor, and FIRST Technical Advisor Assistant</li>
+        </ul>
+        <ul> 2021-2022
+          <li className="ml-4 list-disc text-lg text-muted-foreground">San Diego Regional League Meets & Championship - Lead Field Technical Advisor</li>
+        </ul>
+        <ul> 2020-2021
+          <li className="ml-4 list-disc text-lg text-muted-foreground">San Diego Region Livestream Manager</li>
+        </ul>
+         <ul> 2019-2020
+          <li className="ml-4 list-disc text-lg text-muted-foreground">San Diego Region League Meets & Championship - Lead Scorekeeper</li>
+        </ul>
+      </section>
 
       <Dialog open={!!selectedProject} onOpenChange={(open) => !open && setSelectedProject(null)}>
         <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
