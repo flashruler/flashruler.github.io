@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route, Navigate, useLocation } from "react-router-dom";
 import { ThemeProvider } from "./components/ThemeProvider";
+import { ParticleBackground } from "./components/ParticleBackground";
 import { Navbar } from "./components/Navbar";
 import { Footer } from "./components/Footer";
 import { DocsRouter } from "./docs";
@@ -31,6 +32,7 @@ function AppLayout() {
 export function App() {
   return (
     <ThemeProvider defaultTheme="system" storageKey="app-theme">
+      <ParticleBackground />
       <BrowserRouter>
         <AppLayout />
       </BrowserRouter>
